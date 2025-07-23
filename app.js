@@ -28,7 +28,7 @@ window.login = (e) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Redirigir al dashboard si login correcto
-      window.location.href = "https://app.powerbi.com/view?r=eyJrIjoiNjYxYTE3NDctN2FhZS00OTRjLWJmMTEtNGViN2NmM2IwMzcwIiwidCI6IjJkODcwNTVkLTBlYmItNDdmNy05OTU5LWU3OWYwYzBhMzNkNyJ9";
+      window.location.href = "dashboard.html";
     })
     .catch((error) => {
       document.getElementById("mensajeError").textContent =
