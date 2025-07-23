@@ -1,8 +1,11 @@
-// Importa lo que necesitas
+// Firebase SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
-// Tu configuración de Firebase
+// Configuración de tu proyecto Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyAu8uG3aPprDIi4c-JAB8Gwp58UVY-qSRo",
   authDomain: "powerbilogin-ed98c.firebaseapp.com",
@@ -12,22 +15,23 @@ const firebaseConfig = {
   appId: "1:488545271309:web:260eb66f1ef0b7d39b5f44"
 };
 
-// Inicializar Firebase
+// Inicializa Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Función de login
-window.login = function () {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const errorDiv = document.getElementById("error");
+// Función para login
+window.login = (e) => {
+  e.preventDefault();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Redireccionar al dashboard de Power BI
+      // Redirigir al dashboard si login correcto
       window.location.href = "https://app.powerbi.com/view?r=eyJrIjoiNjYxYTE3NDctN2FhZS00OTRjLWJmMTEtNGViN2NmM2IwMzcwIiwidCI6IjJkODcwNTVkLTBlYmItNDdmNy05OTU5LWU3OWYwYzBhMzNkNyJ9";
     })
     .catch((error) => {
-      errorDiv.innerText = "Credenciales incorrectas.";
+      document.getElementById("mensajeError").textContent =
+        "Credenciales incorrectas. Intenta de nuevo.";
     });
 };
