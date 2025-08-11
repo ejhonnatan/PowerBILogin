@@ -8,28 +8,74 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <div class="login-box">
+    <div class="brand">
+      <img src="LogoBF.png" alt="Logo" style="max-height:64px;margin-bottom:10px;">
+    </div>
+
     <h2>Acceso al Dashboard</h2>
+
     <form onsubmit="login(event)">
       <div class="user-box">
         <input type="email" id="email" required />
         <label>Email</label>
       </div>
+
       <div class="user-box">
         <input type="password" id="password" required />
         <label>Contraseña</label>
       </div>
+
       <button type="submit">Ingresar</button>
     </form>
 
-    <!-- Enlace de recuperar contraseña -->
-    <div class="forgot-password">
-      <a href="#" onclick="forgotPassword()">¿Olvidaste tu contraseña?</a>
+    <div class="auth-links" style="margin-top:10px; text-align:center;">
+      <div class="forgot-password" style="margin:6px 0;">
+        <a href="#" onclick="forgotPassword()">¿Olvidaste tu contraseña?</a>
+      </div>
+      <div class="change-password" style="margin:6px 0;">
+        <a href="#" onclick="openChangePasswordModal()">Cambiar contraseña</a>
+      </div>
     </div>
 
-    <p id="mensajeError" class="error"></p>
+    <p id="mensajeError" class="error" style="text-align:center;"></p>
+
+    <div class="powered" style="margin-top:14px; text-align:center; font-size:12px; opacity:.8;">
+      Construido por
+      <a href="https://wa.me/573193295438" target="_blank" rel="noopener">Conversa</a>
+    </div>
   </div>
 
+  <!-- Modal Cambiar Contraseña -->
+  <div id="modalChangePwd" class="modal hidden">
+    <div class="modal-content">
+      <h3>Cambiar contraseña</h3>
+
+      <form onsubmit="changePassword(event)">
+        <label for="chgEmail">Correo</label>
+        <input type="email" id="chgEmail" placeholder="correo@dominio.com" required />
+
+        <label for="chgCurrent">Contraseña actual</label>
+        <input type="password" id="chgCurrent" placeholder="********" required />
+
+        <label for="chgNew">Nueva contraseña</label>
+        <input type="password" id="chgNew" placeholder="********" minlength="6" required />
+
+        <label for="chgNew2">Repite la nueva contraseña</label>
+        <input type="password" id="chgNew2" placeholder="********" minlength="6" required />
+
+        <p id="chgMsg" class="msg"></p>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" onclick="closeChangePasswordModal()">Cancelar</button>
+          <button type="submit" class="btn-primary">Cambiar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tu lógica de Firebase y autenticación -->
   <script type="module" src="app.js"></script>
 </body>
 </html>
