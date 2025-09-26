@@ -1,9 +1,13 @@
 body {
   margin: 0;
   padding: 0;
-  background: #1c1c1c;
+  background-image: url('https://raw.githubusercontent.com/ejhonnatan/PowerBILogin/main/background-login.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   font-family: Arial, sans-serif;
 }
+
 
 .login-box {
   width: 300px;
@@ -79,4 +83,5 @@ button {
 .forgot-password a:hover {
   text-decoration: underline;
 }
+
 
